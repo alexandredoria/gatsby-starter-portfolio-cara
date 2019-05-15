@@ -34,7 +34,7 @@
     "portfolio"
   ],
   "scripts": {
-    "dev": "gatsby develop -o",
+    "dev": "gatsby develop -o --host=192.168.0.13",
     "develop": "gatsby develop",
     "build": "gatsby build",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",

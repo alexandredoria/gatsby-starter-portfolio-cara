@@ -55,29 +55,66 @@ const ContactText = styled.p`
 
 const Footer = styled.footer`
   ${tw`text-center text-grey absolute pin-b p-6 font-sans text-md lg:text-lg`};
+  `
+  
+  const Button = styled.button`
+  position: fixed;
+  cursor: pointer;
+  top: 1rem;
+  right: 0.5rem;
+  z-index: 1;
+  background: #9561e2;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1em;
+  padding: 0.5em 1em;
+  border: 2px solid #9561e2;
+  border-radius: 3px;
+  :hover{
+    background: #352465;
+  }
+  :active{
+    background: #1f133f;
+  }
+`
+const SVG = styled.svg`
+${tw`align-middle`};
+  color: white;
+  width: 16px;
+  fill: white;
+  margin-right: 0.5em;
 `
 
 const Index = () => (
   <>
     <Layout />
+    <a href="./CV_AlexandreDoria_en.pdf" download>
+    <Button>
+      <SVG viewBox='0 0 20 20'>
+        <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
+      </SVG>
+      Get CV
+    </Button>
+    </a>
     <Parallax pages={5}>
       <Hero offset={0}>
         <BigTitle>
-          Hello, <br /> I'm John Doe.
+          Hello, <br /> I'm Alex Dória.
         </BigTitle>
-        <Subtitle>I'm creating noice web experiences for the next generation of consumer-facing companies.</Subtitle>
+        <Subtitle>I'm creating nice web experiences for the next generation of consumer-facing companies.</Subtitle>
       </Hero>
       <Projects offset={1}>
         <Title>Projects</Title>
         <ProjectsWrapper>
           <ProjectCard
-            title="Freiheit"
-            link="https://www.behance.net/gallery/58937147/Freiheit"
+            title="Antônio Novais Filho's Office"
+            link="http://antonionovaisfilho.com/"
             bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
           >
             This project is my entry to Adobe's #ChallengeYourPerspective contest.
           </ProjectCard>
-          <ProjectCard
+         {/*  <ProjectCard
             title="Harry Potter"
             link="https://www.behance.net/gallery/52915793/Harry-Potter"
             bg="linear-gradient(to right, #662D8C 0%, #ED1E79 100%)"
@@ -97,39 +134,36 @@ const Index = () => (
             bg="linear-gradient(to right, #D585FF 0%, #00FFEE 100%)"
           >
             A fantasy image manipulation relocating the habitat of wild animals.
-          </ProjectCard>
+          </ProjectCard> */}
         </ProjectsWrapper>
       </Projects>
       <About offset={3}>
         <Title>About</Title>
         <AboutHero>
-          <Avatar src={avatar} alt="John Doe" />
+          <Avatar src={avatar} alt="Alex Dória" />
           <AboutSub>
-            The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating
-            Emoji into my speech to better express myself. Winky face.
+            Born to create & share.
           </AboutSub>
         </AboutHero>
         <AboutDesc>
-          You know the way you feel when you see a picture of two otters holding hands? That's how you're gonna feel
-          every day. My mother cried the day I was born because she knew she’d never be prettier than me. You should
-          make me your campaign manager. I was born for politics. I have great hair and I love lying. Captain? The kids
-          want to know where Paulie the Pigeon is. I told them he got sucked up into an airplane engine, is that all
-          right?
+          Programmer since 14yo, with experience in the PHP, Javascript and Java languages, also has knowledge in areas such as system modeling, information security, computer networks and project management. In 2018, he became Scrum Master, and since then he realizes the skills of connecting and boosting people.
+
+          Fluent in Portuguese, proficient in English, basic French and beginner in Spanish.
         </AboutDesc>
       </About>
       <Contact offset={4}>
         <Inner>
           <Title>Get in touch</Title>
           <ContactText>
-            Say <a href="mailto:plizNoSp4m@domain.tld">Hi</a> or find me on other platforms:{' '}
-            <a href="https://dribbble.com/LekoArts">Dribbble</a> &{' '}
-            <a href="https://www.instagram.com/lekoarts.de/">Instagram</a>
+            Say <a href="mailto:alexandredoria.01@hotmail.com">Hi</a> or find me on other platforms:{' '}
+            <a href="https://www.linkedin.com/in/alexandredoria/" target="_blank">Linkedin</a> ,{' '}
+            <a href="https://github.com/alexandredoria" target="_blank">Github</a> ,{' '}
+            <a href="https://www.instagram.com/alexdoria01/" target="_blank">Instagram</a> &{' '}
+            <a href="https://api.whatsapp.com/send?phone=5579998765245" target="_blank">Whatsapp</a>
           </ContactText>
         </Inner>
         <Footer>
-          &copy; 2019 by Gatsby Starter Portfolio Cara.{' '}
-          <a href="https://github.com/LekoArts/gatsby-starter-portfolio-cara">Github Repository</a>. Made by{' '}
-          <a href="https://www.lekoarts.de">LekoArts</a>.
+          &copy; 2019 by Alexandre Dória - Portfolio.
         </Footer>
       </Contact>
     </Parallax>
