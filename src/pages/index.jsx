@@ -19,6 +19,9 @@ import Contact from '../views/Contact'
 
 import avatar from '../images/avatar.jpg'
 
+import { hidden } from '../styles/utils'
+import flag from '../images/flag-sprite.svg'
+
 const ProjectsWrapper = styled.div`
   ${tw`flex flex-wrap justify-between mt-8`};
   display: grid;
@@ -55,14 +58,15 @@ const ContactText = styled.p`
 
 const Footer = styled.footer`
   ${tw`text-center text-grey absolute pin-b p-6 font-sans text-md lg:text-lg`};
-  `
-  
-  const Button = styled.button`
-  position: fixed;
-  cursor: pointer;
-  top: 1rem;
-  right: 0.5rem;
-  z-index: 1;
+`
+const StickRightSide = styled.div`
+position: fixed;
+top: 1rem;
+right: 0.5rem;
+z-index: 1;
+cursor: pointer;
+`
+const Button = styled.button`
   background: #9561e2;
   color: white;
   font-size: 1em;
@@ -85,18 +89,106 @@ ${tw`align-middle`};
   fill: white;
   margin-right: 0.5em;
 `
+const ChangeLanguage = styled.span`
+  ${tw`font-sans text-white `};
+  text-shadow: 0 5px 10px rgba(255, 255, 255, 0.15);
+  position: relative;
+  padding: 8px;
+`
+const Language = styled.ul`
+  display: none;
+  min-width: 215px;
+  position: absolute;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  background: #fff;
+  color: #3c3c3c;
+  padding: 15px 0;
+  right: 0;
+  top: 20px;
+  width: 10%;
+  :hover{
+    display: block;
+  }
+  ${ChangeLanguage}:hover & {
+    display: block;
+  }
+  :after {
+    border: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    content: "";
+    display: block;
+    height: 0;
+    left: 21px;
+    position: absolute;
+    top: -19px;
+    width: 0;
+    left: auto !important;
+    right: 14px;
+  }
+`
+const Country = styled.li`
+  display: inline;
+  float: left;
+  line-height: 1.5em;
+  width: 100%;
+  padding: 8px;
+  & a {
+    -ms-flex-align: center;
+    align-items: center;
+    color: #3c3c3c;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0 15px;
+    white-space: nowrap;
+  }
+  :hover{
+    background: #e9e9e9;
+    border-radius: 16px
+  }
+`
+const Flag = styled.span`
+  zoom: 0.33;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  margin-top: 10px;
+  margin-right: 40px;
+  display: inline-block;
+  height: 62px;
+  width: 78px;
+  &.BR { background: url(${flag}) no-repeat -2px -201px; }
+  &.EN { background: url(${flag}) no-repeat -2px -3px; }
+  &.FR { background: url(${flag}) no-repeat -2px -135px; }
+  &.ES { background: url(${flag}) no-repeat -2px -69px; }
+`
 
 const Index = () => (
   <>
     <Layout />
-    <a href="./CV_AlexandreDoria_en.pdf" download>
-    <Button>
-      <SVG viewBox='0 0 20 20'>
-        <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
-      </SVG>
-      Get CV
-    </Button>
-    </a>
+    <StickRightSide>
+      <ChangeLanguage hidden>
+        Site language: <b>English</b>&nbsp;
+        <SVG viewBox='0 0 650 650'>
+          <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+        </SVG>
+        <Language>
+          <Country> <a href="http://pt.alexandredoria.com/"><Flag className="BR"></Flag><span>Português</span> </a> </Country>
+          <Country> <a href="http://en.alexandredoria.com/"><Flag className="EN"></Flag><span>English</span></a> </Country>
+          <Country> <a href="http://fr.alexandredoria.com/"><Flag className="FR"></Flag><span>Français</span></a> </Country>
+          <Country> <a href="http://es.alexandredoria.com/"><Flag className="ES"></Flag><span>Español</span></a> </Country>
+        </Language>
+      </ChangeLanguage>
+      <a href="./CV_AlexandreDoria_en.pdf" download>
+      <Button>
+        <SVG viewBox='0 0 20 20'>
+          <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
+        </SVG>
+        Get CV
+      </Button>
+      </a>
+    </StickRightSide>
     <Parallax pages={5}>
       <Hero offset={0}>
         <BigTitle>
@@ -112,7 +204,7 @@ const Index = () => (
             link="http://antonionovaisfilho.com/"
             bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
           >
-            This project is my entry to Adobe's #ChallengeYourPerspective contest.
+            Desing, SEO and development freelance...
           </ProjectCard>
          {/*  <ProjectCard
             title="Harry Potter"
