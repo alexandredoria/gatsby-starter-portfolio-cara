@@ -244,7 +244,7 @@ const Index = () => (
         <AboutDesc>
           Programmer since 14yo, with experience in the PHP, Javascript and Java languages, also has knowledge in areas such as system modeling, information security, computer networks and project management. In 2018, he became Scrum Master, and since then he realizes the skills of connecting and boosting people.
 
-          <p>Fluent in Portuguese, proficient in <ShadowSpan><b>English</b><ShadowSpan>, basic <ShadowSpan><b>French</b><ShadowSpan> and beginner in <ShadowSpan><b>Spanish</b><ShadowSpan>.</p>
+          <p>Fluent in Portuguese, proficient in <ShadowSpan><b>English</b></ShadowSpan>, basic <ShadowSpan><b>French</b></ShadowSpan> and beginner in <ShadowSpan><b>Spanish</b></ShadowSpan>.</p>
 
           So why not get in touch with me?
         </AboutDesc>
