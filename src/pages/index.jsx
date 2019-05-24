@@ -89,9 +89,11 @@ ${tw`align-middle`};
   fill: white;
   margin-right: 0.5em;
 `
+const ShadowSpan = styled.span`
+  text-shadow: 0 5px 10px rgba(255, 255, 255, 0.15);
+`
 const ChangeLanguage = styled.span`
   ${tw`font-sans text-white `};
-  text-shadow: 0 5px 10px rgba(255, 255, 255, 0.15);
   position: relative;
   padding: 8px;
 `
@@ -168,8 +170,10 @@ const Index = () => (
   <>
     <Layout />
     <StickRightSide>
-      <ChangeLanguage hidden>
-        Site language: <b>English</b>&nbsp;
+      <ChangeLanguage>
+        <ShadowSpan>
+          Idioma del sitio: <b>Español</b>&nbsp;
+        </ShadowSpan>
         <SVG viewBox='0 0 650 650'>
           <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
         </SVG>
@@ -180,31 +184,31 @@ const Index = () => (
           <Country> <a href="http://es.alexandredoria.com/"><Flag className="ES"></Flag><span>Español</span></a> </Country>
         </Language>
       </ChangeLanguage>
-      <a href="./CV_AlexandreDoria_en.pdf" download>
+      <a href="./CV_AlexandreDoria_es.pdf" download>
       <Button>
         <SVG viewBox='0 0 20 20'>
           <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
         </SVG>
-        Get CV
+        Descargar CV
       </Button>
       </a>
     </StickRightSide>
     <Parallax pages={5}>
       <Hero offset={0}>
         <BigTitle>
-          Hello, <br /> I'm Alex Dória.
+          Hola, <br /> Soy Alex Dória.
         </BigTitle>
-        <Subtitle>I'm creating nice web experiences for the next generation of consumer-facing companies.</Subtitle>
+        <Subtitle>Creo buenas experiencias web para la próxima generación de empresas orientadas al consumidor.</Subtitle>
       </Hero>
       <Projects offset={1}>
-        <Title>Projects</Title>
+        <Title>Proyectos</Title>
         <ProjectsWrapper>
           <ProjectCard
-            title="Antônio Novais Filho's Office"
+            title="Oficina de abogados de Antônio Novais Filho"
             link="http://antonionovaisfilho.com/"
             bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
           >
-            Desing, SEO and development freelance...
+            Freelance de diseño, SEO y desarrollo de software...
           </ProjectCard>
          {/*  <ProjectCard
             title="Harry Potter"
@@ -230,24 +234,24 @@ const Index = () => (
         </ProjectsWrapper>
       </Projects>
       <About offset={3}>
-        <Title>About</Title>
+        <Title>Acerca de</Title>
         <AboutHero>
           <Avatar src={avatar} alt="Alex Dória" />
           <AboutSub>
-            Born to create & share.
+            Nacido para crear y compartir.
           </AboutSub>
         </AboutHero>
         <AboutDesc>
-          Programmer since 14yo, with experience in the PHP, Javascript and Java languages, also has knowledge in areas such as system modeling, information security, computer networks and project management. In 2018, he became Scrum Master, and since then he realizes the skills of connecting and boosting people.
-
-          Fluent in Portuguese, proficient in English, basic French and beginner in Spanish.
+          Programador desde los 14 años, con experiencia en los lenguajes PHP, Javascript y Java, también posee conocimiento en áreas como modelado de sistemas, seguridad de la información, redes de computadoras y gestión de proyectos. En 2018, se convirtió en Scrum Master y desde entonces percibe las habilidades de conectar e impulsar a las personas.
+          <p>Fluido en portugués, competentes en <ShadowSpan><b>Inglés</b></ShadowSpan>, <ShadowSpan><b>Francés</b></ShadowSpan> básico y principiante en <ShadowSpan><b>Español</b></ShadowSpan>.</p>
+          Entonces, ¿por qué no entrar en contacto conmigo?
         </AboutDesc>
       </About>
       <Contact offset={4}>
         <Inner>
-          <Title>Get in touch</Title>
+          <Title>Entrar en contacto</Title>
           <ContactText>
-            Say <a href="mailto:alexandredoria.01@hotmail.com">Hi</a> or find me on other platforms:{' '}
+            Envíale un  <a href="mailto:alexandredoria.01@hotmail.com">Oi</a> o me encuentre en otras plataformas:{' '}
             <a href="https://www.linkedin.com/in/alexandredoria/" target="_blank">Linkedin</a> ,{' '}
             <a href="https://github.com/alexandredoria" target="_blank">Github</a> ,{' '}
             <a href="https://www.instagram.com/alexdoria01/" target="_blank">Instagram</a> &{' '}
@@ -255,7 +259,7 @@ const Index = () => (
           </ContactText>
         </Inner>
         <Footer>
-          &copy; 2019 by Alexandre Dória - Portfolio.
+          &copy; 2019 por Alexandre Dória - Portafolio.
         </Footer>
       </Contact>
     </Parallax>
