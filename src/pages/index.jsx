@@ -89,9 +89,11 @@ ${tw`align-middle`};
   fill: white;
   margin-right: 0.5em;
 `
+const ShadowSpan = styled.span`
+  text-shadow: 0 5px 10px rgba(255, 255, 255, 0.15);
+`
 const ChangeLanguage = styled.span`
   ${tw`font-sans text-white `};
-  text-shadow: 0 5px 10px rgba(255, 255, 255, 0.15);
   position: relative;
   padding: 8px;
 `
@@ -168,8 +170,10 @@ const Index = () => (
   <>
     <Layout />
     <StickRightSide>
-      <ChangeLanguage hidden>
-        Site language: <b>English</b>&nbsp;
+      <ChangeLanguage>
+        <ShadowSpan>
+          Site language: <b>English</b>&nbsp;
+        </ShadowSpan>
         <SVG viewBox='0 0 650 650'>
           <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
         </SVG>
@@ -240,7 +244,9 @@ const Index = () => (
         <AboutDesc>
           Programmer since 14yo, with experience in the PHP, Javascript and Java languages, also has knowledge in areas such as system modeling, information security, computer networks and project management. In 2018, he became Scrum Master, and since then he realizes the skills of connecting and boosting people.
 
-          Fluent in Portuguese, proficient in English, basic French and beginner in Spanish.
+          <p>Fluent in Portuguese, proficient in <ShadowSpan><b>English</b><ShadowSpan>, basic <ShadowSpan><b>French</b><ShadowSpan> and beginner in <ShadowSpan><b>Spanish</b><ShadowSpan>.</p>
+
+          So why not get in touch with me?
         </AboutDesc>
       </About>
       <Contact offset={4}>
