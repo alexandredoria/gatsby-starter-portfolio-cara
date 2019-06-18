@@ -1,6 +1,6 @@
-export const codeLang = 'pt';
-
-const languages = {
+var pathPrefix = ''
+var codeLang = pathPrefix ? pathPrefix : 'en'
+var languages = {
     pt: {
         website: {
             pathPrefix: "/pt",
@@ -151,4 +151,8 @@ const languages = {
     }
 }
 
-export const content = languages[codeLang];
+module.exports = {
+    content: languages[codeLang],
+    codeLang: codeLang,
+    pathPrefix: pathPrefix
+}

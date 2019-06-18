@@ -21,6 +21,8 @@ import avatar from '../images/avatar.jpg'
 
 import { hidden } from '../styles/utils'
 import flag from '../images/flag-sprite.svg'
+import social from '../images/social-sprite.svg'
+import { content, codeLang } from '../content.js'
 
 const ProjectsWrapper = styled.div`
   ${tw`flex flex-wrap justify-between mt-8`};
@@ -93,6 +95,7 @@ const ChangeLanguage = styled.span`
   ${tw`font-sans text-white `};
   text-shadow: 0 5px 10px rgba(255, 255, 255, 0.15);
   position: relative;
+  horizontal-align: middle;
   padding: 8px;
 `
 const Language = styled.ul`
@@ -154,58 +157,84 @@ const Flag = styled.span`
   -ms-transform-origin: 0 0;
   transform-origin: 0 0;
   margin-top: 10px;
-  margin-right: 40px;
+  margin-right: 20px;
   display: inline-block;
-  height: 62px;
+  vertical-align: text-bottom;
+  height: 65px;
   width: 78px;
-  &.BR { background: url(${flag}) no-repeat -2px -201px; }
-  &.EN { background: url(${flag}) no-repeat -2px -3px; }
-  &.FR { background: url(${flag}) no-repeat -2px -135px; }
-  &.ES { background: url(${flag}) no-repeat -2px -69px; }
+  &.pt { background: url(${flag}) no-repeat -2px -201px; }
+  &.en { background: url(${flag}) no-repeat -2px -3px; }
+  &.fr { background: url(${flag}) no-repeat -2px -135px; }
+  &.es { background: url(${flag}) no-repeat -2px -69px; }
 `
 
+const Social = styled.span`
+  zoom: 0.33;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  margin-right: 40px;
+  display: inline-block;
+  &.github { background: url(${social}) no-repeat -5px 0; width: 170px; height: 170px; }
+  &.skype { background: url(${social}) no-repeat 0 -176px; width: 180px; height: 160px; }
+  &.whatsapp { background: url(${social}) no-repeat -4px -341px; width: 172px; height: 173px; }
+  &.instagram { background: url(${social}) no-repeat -4px -518px; width: 172px; height: 172px; }
+  &.twitter { background: url(${social}) no-repeat -5px -695px; width: 170px; height: 146px; }
+  &.linkedin { background: url(${social}) no-repeat -4px -847px; width: 172px; height: 170px; }
+`
+
+const SiteLanguage = styled.span`
+vertical-align: text-top;
+font-weight: bold;
+`
 const Index = () => (
   <>
     <Layout />
     <StickRightSide>
-      <ChangeLanguage hidden>
-        Site language: <b>English</b>&nbsp;
+      <ChangeLanguage>
+        <SiteLanguage><Flag className={codeLang}></Flag><SiteLanguage>{content.language}</SiteLanguage>&nbsp;</SiteLanguage>
         <SVG viewBox='0 0 650 650'>
           <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
         </SVG>
         <Language>
-          <Country> <a href="http://pt.alexandredoria.com/"><Flag className="BR"></Flag><span>Português</span> </a> </Country>
-          <Country> <a href="http://en.alexandredoria.com/"><Flag className="EN"></Flag><span>English</span></a> </Country>
-          <Country> <a href="http://fr.alexandredoria.com/"><Flag className="FR"></Flag><span>Français</span></a> </Country>
-          <Country> <a href="http://es.alexandredoria.com/"><Flag className="ES"></Flag><span>Español</span></a> </Country>
+          <Country> <a href="http://pt.alexandredoria.com/"><Flag className="pt"></Flag><span>Português</span> </a> </Country>
+          <Country> <a href="http://en.alexandredoria.com/"><Flag className="en"></Flag><span>English</span></a> </Country>
+          <Country> <a href="http://fr.alexandredoria.com/"><Flag className="fr"></Flag><span>Français</span></a> </Country>
+          <Country> <a href="http://es.alexandredoria.com/"><Flag className="es"></Flag><span>Español</span></a> </Country>
         </Language>
       </ChangeLanguage>
-      <a href="./CV_AlexandreDoria_en.pdf" download>
+      <a href={"./CV_AlexandreDoria_" + codeLang + ".pdf"} download>
       <Button>
         <SVG viewBox='0 0 20 20'>
           <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
         </SVG>
-        Get CV
+        {content.CV}
       </Button>
       </a>
     </StickRightSide>
     <Parallax pages={5}>
       <Hero offset={0}>
         <BigTitle>
-          Hello, <br /> I'm Alex Dória.
+          <span dangerouslySetInnerHTML={{ __html: content.hero.bigTitle }} />
         </BigTitle>
-        <Subtitle>I'm creating nice web experiences for the next generation of consumer-facing companies.</Subtitle>
+        <Subtitle>
+          <span dangerouslySetInnerHTML={{ __html: content.hero.subTitle }} />
+        </Subtitle>
       </Hero>
       <Projects offset={1}>
-        <Title>Projects</Title>
+        <Title>
+          <span dangerouslySetInnerHTML={{ __html: content.projects.title }} />
+        </Title>
         <ProjectsWrapper>
-          <ProjectCard
-            title="Antônio Novais Filho's Office"
-            link="http://antonionovaisfilho.com/"
-            bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
-          >
-            Desing, SEO and development freelance...
-          </ProjectCard>
+          {content.projects.ProjectCard.map((props, i) => (
+              <ProjectCard key={'pc'+i}
+                title={props.title}
+                link={props.link}
+                bg={props.bg}
+              >
+                {props.desc}
+              </ProjectCard>
+          ))}
+          
          {/*  <ProjectCard
             title="Harry Potter"
             link="https://www.behance.net/gallery/52915793/Harry-Potter"
@@ -230,32 +259,51 @@ const Index = () => (
         </ProjectsWrapper>
       </Projects>
       <About offset={3}>
-        <Title>About</Title>
+        <Title>
+          <span dangerouslySetInnerHTML={{ __html: content.about.title }} />
+        </Title>
         <AboutHero>
           <Avatar src={avatar} alt="Alex Dória" />
           <AboutSub>
-            Born to create & share.
+            <span dangerouslySetInnerHTML={{ __html: content.about.subtitle }} />
           </AboutSub>
         </AboutHero>
         <AboutDesc>
-          Programmer since 14yo, with experience in the PHP, Javascript and Java languages, also has knowledge in areas such as system modeling, information security, computer networks and project management. In 2018, he became Scrum Master, and since then he realizes the skills of connecting and boosting people.
-
-          Fluent in Portuguese, proficient in English, basic French and beginner in Spanish.
+          <span dangerouslySetInnerHTML={{ __html: content.about.desc }} />
         </AboutDesc>
       </About>
       <Contact offset={4}>
         <Inner>
-          <Title>Get in touch</Title>
+          <Title>
+            <span dangerouslySetInnerHTML={{ __html: content.contact.title }} />
+          </Title>
           <ContactText>
-            Say <a href="mailto:alexandredoria.01@hotmail.com">Hi</a> or find me on other platforms:{' '}
-            <a href="https://www.linkedin.com/in/alexandredoria/" target="_blank">Linkedin</a> ,{' '}
-            <a href="https://github.com/alexandredoria" target="_blank">Github</a> ,{' '}
-            <a href="https://www.instagram.com/alexdoria01/" target="_blank">Instagram</a> &{' '}
-            <a href="https://api.whatsapp.com/send?phone=5579998765245" target="_blank">Whatsapp</a>
+            <span dangerouslySetInnerHTML={{ __html: content.contact.text }} />
+          
           </ContactText>
         </Inner>
         <Footer>
-          &copy; 2019 by Alexandre Dória - Portfolio.
+          <p>
+            <a href="https://www.twitter.com/alexdoria01/" target="_blank">
+              <Social className="twitter" alt="Twitter"></Social>
+            </a>
+            <a href="https://www.instagram.com/alexdoria01/" target="_blank">
+              <Social className="instagram" alt="Instagram"></Social>
+            </a>
+            <a href="https://www.linkedin.com/in/alexandredoria/" target="_blank">
+              <Social className="linkedin" alt="Linkedin"></Social>
+            </a>
+            <a href="https://github.com/alexandredoria" target="_blank">
+              <Social className="github" alt="Github"></Social>
+            </a>
+            <a href="https://www.linkedin.com/in/alexandredoria/" target="_blank">
+              <Social className="skype" alt="Skype"></Social>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=5579998765245" target="_blank">
+              <Social className="whatsapp" alt="Whatsapp"></Social>
+            </a>
+          </p>
+          &copy; {new Date().getFullYear() + ' ' + content.contact.footer}
         </Footer>
       </Contact>
     </Parallax>
