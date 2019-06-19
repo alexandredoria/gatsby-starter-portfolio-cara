@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
 import { Parallax } from 'react-spring/renderprops-addons.cjs'
@@ -180,6 +181,14 @@ const Social = styled.span`
   &.instagram { background: url(${social}) no-repeat -4px -518px; width: 172px; height: 172px; }
   &.twitter { background: url(${social}) no-repeat -5px -695px; width: 170px; height: 146px; }
   &.linkedin { background: url(${social}) no-repeat -4px -847px; width: 172px; height: 170px; }
+  &.shake {
+    @keyframes shake {
+      0%, 100% {transform: translateX(0);} 
+      10%, 30%, 50%, 70%, 90% {transform: translateX(-2.5px);} 
+      20%, 40%, 60%, 80% {transform: translateX(2.5px);} 
+    }
+    animation: shake 2s; animation-iteration-count: infinite; 
+  }
 `
 
 const SiteLanguage = styled.span`
@@ -296,17 +305,20 @@ const Index = () => (
             <a href="https://github.com/alexandredoria" target="_blank">
               <Social className="github" alt="Github"></Social>
             </a>
-            <a href="https://www.linkedin.com/in/alexandredoria/" target="_blank">
-              <Social className="skype" alt="Skype"></Social>
+            <a className="skype-button bubble" data-contact-id="alexandredoria.01">
+              <Social className="skype shake" alt="Skype"></Social>
             </a>
             <a href="https://api.whatsapp.com/send?phone=5579998765245" target="_blank">
-              <Social className="whatsapp" alt="Whatsapp"></Social>
+              <Social className="whatsapp shake" alt="Whatsapp"></Social>
             </a>
           </p>
           &copy; {new Date().getFullYear() + ' ' + content.contact.footer}
         </Footer>
       </Contact>
     </Parallax>
+    <Helmet>
+      <script defer="defer" src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
+    </Helmet>
   </>
 )
 
